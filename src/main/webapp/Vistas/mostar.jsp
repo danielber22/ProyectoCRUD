@@ -18,6 +18,7 @@
     <body>
         <div>
             <h1>Personas</h1>
+            <a href="Controlador1?accion=agregar">Agregar Nuevo Registro</a>
             <table border = "1">
                 <thead>
                     <tr>
@@ -35,8 +36,6 @@
                     Personas per = null;
                     while(iter.hasNext()){
                         per = iter.next();
-                    }
-                
                 %>
                 <tbody>
                     <tr>
@@ -49,9 +48,9 @@
                             <a>Eliminar</a>
                         </th>
                     </tr>
+                    <% } %> 
                 </tbody>
             </table>
         </div>
-        <h1>Hello World!</h1>
     </body>
 </html>

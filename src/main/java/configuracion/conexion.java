@@ -5,7 +5,9 @@
  */
 package configuracion;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import java.sql.*;
+import java.sql.DriverManager;
 /**
  *
  * @author Daniel
@@ -13,12 +15,14 @@ import java.sql.*;
 public class conexion {
     
     public static Connection getConexion(){
-        String Url = "jdbc:sqlserver://localhost:1433;"
-                    + "database=ProyJava;"
-                    + "user=userpc;"
-                    + "password=admin;";
+        SQLServerDataSource ds = new SQLServerDataSource(); 
+        ds.setUser("userpc"); 
+        ds.setPassword("admin"); 
+        ds.setServerName("localhost"); 
+        ds.setPortNumber(1433); 
+        ds.setDatabaseName("ProyJava"); 
         try {
-            Connection con = DriverManager.getConnection(Url);
+            Connection con = ds.getConnection();
             System.out.println("Conectado.");
             return con;
         } 

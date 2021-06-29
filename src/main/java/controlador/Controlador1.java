@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Personas;
+import modeloDAO.PersonasDAO;
 
 /**
  *
@@ -28,6 +30,8 @@ public class Controlador1 extends HttpServlet {
     String mostrar = "Vistas/mostar.jsp";
     String editar = "Vistas/editar.jsp";
     String agregar = "Vistas/agregar.jsp";
+    Personas p = new Personas();
+    PersonasDAO dao = new PersonasDAO();
             
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -62,6 +66,18 @@ public class Controlador1 extends HttpServlet {
         String action = request.getParameter("accion");
         if(action.equalsIgnoreCase("mostrar")){
             acceso = mostrar; 
+        }else if(action.equalsIgnoreCase("agregar")){
+            acceso = agregar; 
+        }else if(action.equalsIgnoreCase("add")){
+            String nom = request.getParameter("txtnom");
+            String agee = request.getParameter("txtage");
+            int age = Integer.parseInt(agee);  
+            String pis = request.getParameter("txtpais");
+            p.setNombre(nom);
+            p.setEdad(age);
+            p.setPais(pis);
+            dao.agregar(p);
+            acceso = mostrar;
         }
         RequestDispatcher vista= request.getRequestDispatcher(acceso);
         vista.forward(request, response);

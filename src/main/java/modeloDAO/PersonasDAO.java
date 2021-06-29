@@ -25,7 +25,7 @@ public class PersonasDAO implements CRUD {
     @Override
     public List mostrar() {
         ArrayList<Personas>list = new ArrayList<>();
-        String sql = "select * from Pruebatb1";
+        String sql = "select * from dbo.Pruebatb1";
         try{
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
@@ -39,6 +39,7 @@ public class PersonasDAO implements CRUD {
                 list.add(per);
             }
         } catch (Exception e){
+            System.out.println("No se pudo conectar a la bd");
         }
         return list;
     }
@@ -50,7 +51,16 @@ public class PersonasDAO implements CRUD {
 
     @Override
     public boolean agregar(Personas per) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "insert into dbo.Pruebatb1 (nombre, edad, pais)"
+                + "values('"+per.getNombre()+"','"+per.getEdad()+"','"+per.getPais()+"')";
+        try{
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+        
+        }
+        return false;
     }
 
     @Override

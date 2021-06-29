@@ -12,6 +12,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div>
+            <h1>Agregar Registro</h1>
+            <form action="Controlador1">
+                Nombre:<br>
+                <input type="text" name="txtnom"><br>
+                Edad:<br>
+                <input type="number" name="txtage"><br>
+                Pais:<br>
+                <input type="text" name="txtpais"><br>
+                <input type="submit" name="accion" value="add"><br>
+            </form>
+        </div>
     </body>
 </html>
