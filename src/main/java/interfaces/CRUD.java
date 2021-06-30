@@ -14,7 +14,7 @@ import modelo.Personas;
  */
 public interface CRUD {
     public List mostrar();
-    public Personas list();
+    public Personas list(int id);
     public boolean agregar(Personas per);
     public boolean editar(Personas per);
     public boolean eliminar(int id);

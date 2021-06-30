@@ -28,10 +28,11 @@ public class Controlador1 extends HttpServlet {
      */
     
     String mostrar = "Vistas/mostar.jsp";
-    String editar = "Vistas/editar.jsp";
+    String editarr = "Vistas/editar.jsp";
     String agregar = "Vistas/agregar.jsp";
     Personas p = new Personas();
     PersonasDAO dao = new PersonasDAO();
+    int  id;
             
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -77,6 +78,27 @@ public class Controlador1 extends HttpServlet {
             p.setEdad(age);
             p.setPais(pis);
             dao.agregar(p);
+            acceso = mostrar;
+        }else if(action.equalsIgnoreCase("editar")){
+            System.out.println("controlador11 "+request.getParameter("id"));
+            request.setAttribute("idper",request.getParameter("id"));
+            acceso = editarr; 
+        }else if(action.equalsIgnoreCase("actualizar")){
+            id=Integer.parseInt(request.getParameter("txtid"));
+            String nom = request.getParameter("txtnom");
+            String agee = request.getParameter("txtage");
+            int age = Integer.parseInt(agee);  
+            String pis = request.getParameter("txtpais");
+            p.setId(id);
+            p.setNombre(nom);
+            p.setEdad(age);
+            p.setPais(pis);
+            dao.editar(p);
+            acceso = mostrar;
+        }else if(action.equalsIgnoreCase("eliminar")){
+            id=Integer.parseInt(request.getParameter("id"));
+            p.setId(id);
+            dao.eliminar(id);
             acceso = mostrar;
         }
         RequestDispatcher vista= request.getRequestDispatcher(acceso);

@@ -18,12 +18,16 @@ public class Personas {
     public Personas() {
     }
 
-    public Personas(int id, String nombre, int edad, String pais) {
+    public Personas(int id) {
         this.id = id;
+    }
+
+    public Personas(String nombre, int edad, String pais) {
         this.nombre = nombre;
         this.edad = edad;
         this.pais = pais;
     }
+    
 
     public int getId() {
         return id;

@@ -43,10 +43,24 @@ public class PersonasDAO implements CRUD {
         }
         return list;
     }
-
+    
     @Override
-    public Personas list() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Personas list(int id) {
+        String sql = "select * from dbo.Pruebatb1 where id="+id;
+        try{
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                p.setId(rs.getInt("id"));
+                p.setNombre(rs.getString("nombre"));
+                p.setEdad(rs.getInt("edad"));
+                p.setPais(rs.getString("pais"));
+            } 
+        } catch (Exception e){
+            System.out.println("Error");
+        }
+        return p;
     }
 
     @Override
@@ -65,12 +79,31 @@ public class PersonasDAO implements CRUD {
 
     @Override
     public boolean editar(Personas per) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "update dbo.Pruebatb1 set"
+                + "nombre='"+per.getNombre()+"',edad='"+per.getEdad()+"',pais='"+per.getPais()
+                +"'where id="+per.getId();
+        try{
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+        
+        }
+        return false;
     }
 
     @Override
     public boolean eliminar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "delete from dbo.Pruebatb1 where id="+id;
+        try{
+            con = cn.getConexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+        
+        }
+        return false;
+        
     }
     
 }

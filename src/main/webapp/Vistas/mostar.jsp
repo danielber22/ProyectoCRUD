@@ -13,13 +13,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Mostrando Registro de Personas</title>
+        <link type="text/css" rel="stylesheet" href="resources/css/materialize.css"/>
     </head>
     <body>
         <div>
-            <h1>Personas</h1>
-            <a href="Controlador1?accion=agregar">Agregar Nuevo Registro</a>
-            <table border = "1">
+            <h3 class="center-align">Registro de Personas</h3>
+            <a class="waves-effect waves-light btn" href="Controlador1?accion=agregar">Agregar Nuevo Registro</a>
+        </div>
+        <div class="m12">    
+            <table class="highlight">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -44,13 +47,14 @@
                         <th><%= per.getEdad() %></th>
                         <th><%= per.getPais() %></th>
                         <th>
-                            <a>Editar</a>
-                            <a>Eliminar</a>
+                            <a class="btn waves-effect waves-light yellow darken-3" href="Controlador1?accion=editar&id<%= per.getId()%>">Editar</a>
+                            <a class="btn waves-effect waves-light red darken-3" href="Controlador1?accion=eliminar&id<%= per.getId()%>">Eliminar</a>
                         </th>
                     </tr>
                     <% } %> 
                 </tbody>
             </table>
         </div>
+    <script type="text/javascript" src="js/materialize.js"></script>
     </body>
 </html>
