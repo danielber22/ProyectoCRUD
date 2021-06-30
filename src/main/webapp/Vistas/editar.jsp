@@ -12,6 +12,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Editar Registro</title>
+        <link type="text/css" rel="stylesheet" href="resources/css/materialize.css"/>
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <div>
@@ -20,7 +22,7 @@
                     int id = Integer.parseInt((String)request.getAttribute("idper"));
                     Personas p=(Personas)dao.list(id);
             %>
-            <h1>Modificar Registro</h1>
+            <h1 class="center-align">Modificar Registro</h1>
             <form action="Controlador1">
                 Nombre:<br>
                 <input type="text" name="txtnom" value="<%= p.getNombre()%>"><br>
@@ -28,8 +30,8 @@
                 <input type="number" name="txtage" value="<%= p.getEdad()%>"><br>
                 Pais:<br>
                 <input type="text" name="txtpais" value="<%= p.getPais()%>"><br>
-                <input type="hidden" name="txtid" value="">
-                <input type="submit" name="accion" value="actualizar"><br>
+                <input type="hidden" name="txtid" value="<%= p.getId()%>">
+                <input class="waves-effect waves-light btn" type="submit" name="accion" value="actualizar"><br>
                 <a href="Controlador1?accion=mostrar">Regresar</a>
             </form>
         </div>
