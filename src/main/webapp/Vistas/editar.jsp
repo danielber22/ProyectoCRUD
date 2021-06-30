@@ -17,7 +17,6 @@
         <div>
             <%
                     PersonasDAO dao = new PersonasDAO();
-                    System.out.println(request.getAttribute("idper"));
                     int id = Integer.parseInt((String)request.getAttribute("idper"));
                     Personas p=(Personas)dao.list(id);
             %>

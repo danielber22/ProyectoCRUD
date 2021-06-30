@@ -47,8 +47,8 @@
                         <th><%= per.getEdad() %></th>
                         <th><%= per.getPais() %></th>
                         <th>
-                            <a class="btn waves-effect waves-light yellow darken-3" href="Controlador1?accion=editar&id<%= per.getId()%>">Editar</a>
-                            <a class="btn waves-effect waves-light red darken-3" href="Controlador1?accion=eliminar&id<%= per.getId()%>">Eliminar</a>
+                            <a class="btn waves-effect waves-light yellow darken-3" href="Controlador1?accion=editar&id=<%= per.getId()%>">Editar</a>
+                            <a class="btn waves-effect waves-light red darken-3" href="Controlador1?accion=eliminar&id=<%= per.getId()%>">Eliminar</a>
                         </th>
                     </tr>
                     <% } %> 

@@ -80,7 +80,6 @@ public class Controlador1 extends HttpServlet {
             dao.agregar(p);
             acceso = mostrar;
         }else if(action.equalsIgnoreCase("editar")){
-            System.out.println("controlador11 "+request.getParameter("id"));
             request.setAttribute("idper",request.getParameter("id"));
             acceso = editarr; 
         }else if(action.equalsIgnoreCase("actualizar")){
